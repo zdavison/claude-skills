@@ -1,0 +1,8 @@
+{
+  "name": "my-skills",
+  "owner": { "name": "Zachary Davison" },
+  "description": "Personal collection of skills for Zachary Davison.",
+  "plugins": [
+    { "name": "my-skills", "source": "." }
+  ]
+}
