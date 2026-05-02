@@ -3,6 +3,10 @@
   "owner": { "name": "Zachary Davison" },
   "description": "Personal collection of skills for Zachary Davison.",
   "plugins": [
-    { "name": "my-skills", "source": "." }
+    {
+      "name": "my-skills",
+      "source": "./my-skills",
+      "description": "Prior art research, requirements drafting, and Quint literate spec skills"
+    }
   ]
 }

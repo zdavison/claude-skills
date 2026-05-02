@@ -6,9 +6,9 @@ A personal collection of [Claude Code](https://docs.claude.com/en/docs/claude-co
 
 | Skill | What it does |
 |---|---|
-| [`prior-art-research`](skills/prior-art-research/SKILL.md) | Surveys existing solutions for a problem and produces an honest build-vs-reuse recommendation. |
-| [`drafting-requirements`](skills/drafting-requirements/SKILL.md) | Defines what a system must do (not how) — stakeholder-traced, with explicit non-goals and surfaced conflicts. |
-| [`quint-literate-spec`](skills/quint-literate-spec/SKILL.md) | Writes a [literate Quint](https://quint.sh/docs/literate) specification — prose and formal model in one markdown file, validated with `lmt` + `quint typecheck`. |
+| [`prior-art-research`](my-skills/skills/prior-art-research/SKILL.md) | Surveys existing solutions for a problem and produces an honest build-vs-reuse recommendation. |
+| [`drafting-requirements`](my-skills/skills/drafting-requirements/SKILL.md) | Defines what a system must do (not how) — stakeholder-traced, with explicit non-goals and surfaced conflicts. |
+| [`quint-literate-spec`](my-skills/skills/quint-literate-spec/SKILL.md) | Writes a [literate Quint](https://quint.sh/docs/literate) specification — prose and formal model in one markdown file, validated with `lmt` + `quint typecheck`. |
 
 Each skill is standalone — use any one without the others.
 
@@ -46,12 +46,14 @@ To force an update without restarting:
 
 ```
 .claude-plugin/
-  marketplace.json   # marketplace catalog
-  plugin.json        # plugin manifest
-skills/
-  prior-art-research/SKILL.md
-  drafting-requirements/SKILL.md
-  quint-literate-spec/SKILL.md
+  marketplace.json         # marketplace catalog
+my-skills/                 # the plugin
+  .claude-plugin/
+    plugin.json
+  skills/
+    prior-art-research/SKILL.md
+    drafting-requirements/SKILL.md
+    quint-literate-spec/SKILL.md
 ```
 
-Skills under `skills/` are auto-discovered by Claude Code — adding a new one is just a new directory with a `SKILL.md`.
+Skills under `my-skills/skills/` are auto-discovered by Claude Code — adding a new one is just a new directory with a `SKILL.md`.
