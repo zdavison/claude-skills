@@ -18,7 +18,7 @@ In Claude Code:
 
 ```
 /plugin marketplace add zdavison/claude-skills
-/plugin install my-skills@my-skills
+/plugin install my-skills@zdavison
 ```
 
 Replace `zdavison/claude-skills` with whatever GitHub path this repo lives at.
@@ -32,14 +32,14 @@ The plugin manifest pins no version, so Claude Code treats every push to `main` 
 To force an update without restarting:
 
 ```
-/plugin marketplace update my-skills
+/plugin marketplace update zdavison
 ```
 
 ## Uninstall
 
 ```
-/plugin uninstall my-skills@my-skills
-/plugin marketplace remove my-skills
+/plugin uninstall my-skills@zdavison
+/plugin marketplace remove zdavison
 ```
 
 ## Layout
