@@ -7,6 +7,14 @@
       "name": "my-skills",
       "source": "./my-skills",
       "description": "Prior art research, requirements drafting, and Quint literate spec skills"
+    },
+    {
+      "name": "quint",
+      "source": {
+        "source": "github",
+        "repo": "zdavison/skill-quint"
+      },
+      "description": "Quint formal specification language reference — constraints, code generation, verification, testing, debugging, and planning"
     }
   ]
 }

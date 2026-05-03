@@ -1,6 +1,6 @@
 ---
 name: quint-literate-spec
-description: "Use when the user wants to write a Quint formal specification interleaved with prose in a single markdown file, using the `lmt` literate format. TRIGGER when: 'literate Quint spec', 'literate spec in Quint', 'spec this in Quint with prose', 'use lmt to extract', or any request to formalise a system in Quint where the prose and formal model should live together. Produces a markdown file from which `lmt` extracts `.qnt` files, validated by `quint typecheck`."
+description: "Use when the user wants to write a Quint formal specification interleaved with prose in a single markdown file, using the `lmt` literate format. TRIGGER when: 'literate Quint spec', 'literate spec in Quint', 'spec this in Quint with prose', 'use lmt to extract', or any request to formalise a system in Quint where the prose and formal model should live together. Produces a markdown file from which `lmt` extracts `.qnt` files, validated by `quint typecheck`. REQUIRES the `quint` skill (zdavison marketplace) to be installed — prompt the user to install it before proceeding if it is not loaded."
 ---
 
 # Quint Literate Spec
@@ -8,6 +8,24 @@ description: "Use when the user wants to write a Quint formal specification inte
 Write a literate Quint specification: prose and formal Quint code interleaved in a single markdown file, with code blocks tagged so `lmt` can extract them to `.qnt` files, then validated by `quint typecheck`.
 
 This skill is specifically about **the literate-spec authoring loop**: structuring the markdown, tagging blocks correctly, and validating the result. Deeper Quint work — language constraints, model checking, witnesses, test debugging, refactoring — is out of scope here. If the user already has `.qnt` files and wants to edit, verify, or debug them, this is the wrong skill.
+
+<PRECONDITION>
+This skill writes Quint code, so the `quint` skill MUST be loaded alongside it. The `quint` skill ships as a separate plugin in the `zdavison` marketplace and covers the language constraints, iteration, and verification patterns this skill assumes.
+
+**Before doing anything else, check that the `quint` skill is available** (look for it in the available-skills list). If it is not:
+
+1. Stop. Do not start drafting the literate spec.
+2. Ask the user to install it:
+
+   ```
+   /plugin marketplace add zdavison/claude-skills
+   /plugin install quint@zdavison
+   ```
+
+3. Wait for the user to confirm installation, then resume.
+
+Whenever you write or edit Quint code in this skill — including code that goes inside ` ```quint <file>.qnt += ` blocks — invoke the `quint` skill to apply its language rules and iteration protocols. This skill governs the *markdown/lmt loop*; the `quint` skill governs the *Quint code itself*.
+</PRECONDITION>
 
 <HARD-GATE>
 Do NOT declare the spec done until BOTH of these have run cleanly:
@@ -42,6 +60,7 @@ The spec should be at the level where invariants can be stated and checked. If y
 
 You MUST create a task for each of these items and complete them in order:
 
+0. **Verify the `quint` skill is installed** — see PRECONDITION above. If it is not loaded, prompt the user to install `quint@zdavison` and stop until they confirm.
 1. **Establish the source material** — design doc, requirements, prose description, the user's verbal model — whatever is being formalised
 2. **Sketch module boundaries** — one module per logical component, plus a top-level composition module if needed
 3. **Decide on the property targets** — what invariants and temporal properties this spec will check, and what is assumed about the environment (not checked)
